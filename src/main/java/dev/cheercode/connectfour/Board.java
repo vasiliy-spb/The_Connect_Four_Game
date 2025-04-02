@@ -40,9 +40,9 @@ public class Board {
         if (isFilled(column)) {
             throw new IllegalArgumentException("Column %d is filled.".formatted(column + 1));
         }
-        int position = positions[column];
+        int row = positions[column];
         if (isSlotEmpty(column)) {
-            grid[position][column] = disk;
+            grid[row][column] = disk;
             positions[column]--;
         }
     }
@@ -51,8 +51,8 @@ public class Board {
         if (isOutOfBounds(column)) {
             throw new IndexOutOfBoundsException("Column number out of bounds.");
         }
-        int position = positions[column];
-        return grid[position][column] == Disk.EMPTY;
+        int row = positions[column];
+        return grid[row][column] == Disk.EMPTY;
     }
 
     public boolean isFilled(int column) {
