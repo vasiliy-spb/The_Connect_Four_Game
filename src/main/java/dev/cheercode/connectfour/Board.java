@@ -35,10 +35,10 @@ public class Board {
 
     public void put(Disk disk, int column) {
         if (isOutOfBounds(column)) {
-            throw new IllegalArgumentException("Column number out of bounds.");
+            throw new IndexOutOfBoundsException("Column number out of bounds.");
         }
         if (isFilled(column)) {
-            return;
+            throw new IllegalArgumentException("Column %d is filled.".formatted(column + 1));
         }
         int position = positions[column];
         if (isSlotEmpty(column)) {
@@ -49,7 +49,7 @@ public class Board {
 
     private boolean isSlotEmpty(int column) {
         if (isOutOfBounds(column)) {
-            throw new IllegalArgumentException("Column number out of bounds.");
+            throw new IndexOutOfBoundsException("Column number out of bounds.");
         }
         int position = positions[column];
         return grid[position][column] == Disk.EMPTY;
@@ -57,7 +57,7 @@ public class Board {
 
     public boolean isFilled(int column) {
         if (isOutOfBounds(column)) {
-            throw new IllegalArgumentException("Column number out of bounds.");
+            throw new IndexOutOfBoundsException("Column number out of bounds.");
         }
         return positions[column] < 0;
     }
