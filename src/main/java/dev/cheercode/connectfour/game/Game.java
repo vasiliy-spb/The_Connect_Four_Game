@@ -9,35 +9,45 @@ import dev.cheercode.connectfour.renders.Render;
 import java.util.Queue;
 
 public class Game {
-    private static final String WELCOME_MESSAGE = """
+    private static final String WELCOME_MESSAGE_TEMPLATE = """
             ====================================================================================
-                                                ИГРА 4 В РЯД
+                                                ИГРА %s В РЯД
             ====================================================================================
             """;
+    private final int connectCountToVictory;
+    private final String welcomeMessage;
     private final Board board;
     private final Queue<Player> players;
     private final Render render;
     private final ResultAnalyzer resultAnalyzer;
 
-    public Game(Queue<Player> players, Render render, ResultAnalyzer resultAnalyzer) {
+    public Game(Queue<Player> players, Render render, ResultAnalyzer resultAnalyzer, int connectCountToVictory) {
         this.board = StandardBoardFactory.create();
         this.players = players;
         this.render = render;
         this.resultAnalyzer = resultAnalyzer;
+        this.connectCountToVictory = connectCountToVictory;
+        this.welcomeMessage = WELCOME_MESSAGE_TEMPLATE.formatted(connectCountToVictory);
     }
 
     public void start() {
-        System.out.println(WELCOME_MESSAGE);
+        System.out.println(welcomeMessage);
         render.display(board.getGrid());
+        Player player = players.peek();
         while (!isGameOver()) {
-            Player player = players.poll();
+            player = players.poll();
             nextTurn(player);
+            render.display(board.getGrid());
             players.offer(player);
-            if (resultAnalyzer.hasWinner(board.getGrid())) {
-                System.out.printf("Победил игрок: %s\n", player.getName());
-            }
         }
-        if (!resultAnalyzer.hasWinner(board.getGrid())) {
+        showGameResult(player);
+    }
+
+    private void showGameResult(Player player) {
+        System.out.println("——— Игра окончена ———");
+        if (resultAnalyzer.hasWinner(board.getGrid(), connectCountToVictory)) {
+            System.out.printf("Победил игрок: %s\n", player.getName());
+        } else {
             System.out.println("— Ничья —");
         }
     }
@@ -52,12 +62,6 @@ public class Game {
 
         Disk playersDisk = player.getDisk();
         board.put(playersDisk, columnIndex);
-
-        render.display(board.getGrid());
-
-        if (resultAnalyzer.hasWinner(board.getGrid())) {
-            System.out.printf("Победил игрок: %s\n", player.getName());
-        }
     }
 
     private boolean isFilled(int columnNumber) {
@@ -66,6 +70,6 @@ public class Game {
     }
 
     private boolean isGameOver() {
-        return resultAnalyzer.hasWinner(board.getGrid()) || board.isFull();
+        return resultAnalyzer.hasWinner(board.getGrid(), connectCountToVictory) || board.isFull();
     }
 }
