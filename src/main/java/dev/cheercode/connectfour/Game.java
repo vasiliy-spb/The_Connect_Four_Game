@@ -18,7 +18,7 @@ public class Game {
     private final Dialog<Integer> dialog;
 
     public Game(Queue<Player> players, Render render, ResultAnalyzer resultAnalyzer) {
-        this.board = BoardFactory.create();
+        this.board = StandardBoardFactory.create();
         this.players = players;
         this.render = render;
         this.resultAnalyzer = resultAnalyzer;

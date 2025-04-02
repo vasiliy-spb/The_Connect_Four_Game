@@ -1,10 +1,10 @@
 package dev.cheercode.connectfour;
 
-public final class BoardFactory {
+public final class StandardBoardFactory {
     private static final int HEIGHT = 6;
     private static final int WIDTH = 7;
 
-    private BoardFactory() {
+    private StandardBoardFactory() {
     }
 
     public static Board create() {
