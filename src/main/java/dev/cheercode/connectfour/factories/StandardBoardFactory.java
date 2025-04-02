@@ -1,4 +1,6 @@
-package dev.cheercode.connectfour;
+package dev.cheercode.connectfour.factories;
+
+import dev.cheercode.connectfour.models.Board;
 
 public final class StandardBoardFactory {
     private static final int HEIGHT = 6;

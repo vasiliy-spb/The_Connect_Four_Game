@@ -1,4 +1,4 @@
-package dev.cheercode.connectfour;
+package dev.cheercode.connectfour.models;
 
 import dev.cheercode.connectfour.dialogs.Dialog;
 import dev.cheercode.connectfour.dialogs.impl.IntegerMinMaxDialog;

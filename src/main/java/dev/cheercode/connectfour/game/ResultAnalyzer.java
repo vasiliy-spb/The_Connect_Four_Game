@@ -1,4 +1,6 @@
-package dev.cheercode.connectfour;
+package dev.cheercode.connectfour.game;
+
+import dev.cheercode.connectfour.models.Disk;
 
 public class ResultAnalyzer {
     public boolean hasWinner(Disk[][] grid) {

@@ -1,4 +1,6 @@
-package dev.cheercode.connectfour;
+package dev.cheercode.connectfour.renders;
+
+import dev.cheercode.connectfour.models.Disk;
 
 public class ConsoleRender implements Render {
     @Override

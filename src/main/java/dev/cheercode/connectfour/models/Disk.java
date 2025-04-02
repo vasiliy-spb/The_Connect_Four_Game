@@ -1,4 +1,4 @@
-package dev.cheercode.connectfour;
+package dev.cheercode.connectfour.models;
 
 public enum Disk {
     BLUE,
