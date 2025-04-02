@@ -1,5 +1,8 @@
 package dev.cheercode.connectfour;
 
+import dev.cheercode.connectfour.dialogs.Dialog;
+import dev.cheercode.connectfour.dialogs.impl.IntegerMinMaxDialog;
+
 public class Player {
     private final String name;
     private final Disk disk;
@@ -15,5 +18,14 @@ public class Player {
 
     public Disk getDisk() {
         return disk;
+    }
+
+    public int select(Board board) {
+        int firstColumn = 1;
+        int lastColumn = board.getWidth();
+        String title = name + ", введите номер колонки:";
+        String error = "Неправильный ввод.";
+        Dialog<Integer> dialog = new IntegerMinMaxDialog(title, error, firstColumn, lastColumn);
+        return dialog.input();
     }
 }
