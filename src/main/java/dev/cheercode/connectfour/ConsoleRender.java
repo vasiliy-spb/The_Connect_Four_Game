@@ -17,18 +17,11 @@ public class ConsoleRender implements Render {
     }
 
     private String getRepresentation(Disk disk) {
-        if (disk == null) {
-            return "⚪";
-        }
         return switch (disk) {
             case BLUE -> "\uD83D\uDD35";
             case RED -> "\uD83D\uDD34";
+            case EMPTY -> "⚪";
             default -> "";
         };
     }
 }
-/*
-
-
-
- */
