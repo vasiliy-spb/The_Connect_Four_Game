@@ -3,7 +3,7 @@ package dev.cheercode.connectfour.game;
 import dev.cheercode.connectfour.factories.StandardBoardFactory;
 import dev.cheercode.connectfour.models.Board;
 import dev.cheercode.connectfour.models.Disk;
-import dev.cheercode.connectfour.models.Player;
+import dev.cheercode.connectfour.models.players.Player;
 import dev.cheercode.connectfour.renders.Render;
 
 import java.util.Queue;

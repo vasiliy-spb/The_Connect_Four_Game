@@ -1,25 +1,16 @@
-package dev.cheercode.connectfour.models;
+package dev.cheercode.connectfour.models.players;
 
 import dev.cheercode.connectfour.dialogs.Dialog;
 import dev.cheercode.connectfour.dialogs.impl.IntegerMinMaxDialog;
+import dev.cheercode.connectfour.models.Board;
+import dev.cheercode.connectfour.models.Disk;
 
-public class Player {
-    private final String name;
-    private final Disk disk;
-
-    public Player(String name, Disk disk) {
-        this.name = name;
-        this.disk = disk;
+public class RealPlayer extends AbstractPlayer {
+    public RealPlayer(String name, Disk disk) {
+        super(name, disk);
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public Disk getDisk() {
-        return disk;
-    }
-
+    @Override
     public int select(Board board) {
         int firstColumn = 1;
         int lastColumn = board.getWidth();
