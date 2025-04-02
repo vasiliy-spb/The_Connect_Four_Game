@@ -3,6 +3,10 @@ package dev.cheercode.connectfour.renders;
 import dev.cheercode.connectfour.models.Disk;
 
 public class ConsoleRender implements Render {
+    private static final String BLUE_DISK = "\uD83D\uDD35";
+    private static final String RED_DISK = "\uD83D\uDD34";
+    private static final String EMPTY_DISK = "⚪";
+
     @Override
     public void display(Disk[][] grid) {
         for (int i = 1; i <= grid[0].length; i++) {
@@ -20,10 +24,10 @@ public class ConsoleRender implements Render {
 
     private String getRepresentation(Disk disk) {
         return switch (disk) {
-            case BLUE -> "\uD83D\uDD35";
-            case RED -> "\uD83D\uDD34";
-            case EMPTY -> "⚪";
-            default -> "";
+            case BLUE -> BLUE_DISK;
+            case RED -> RED_DISK;
+            case EMPTY -> EMPTY_DISK;
+            default -> throw new IllegalArgumentException("Unknown representation for disk: " + disk.name());
         };
     }
 }
