@@ -1,8 +1,5 @@
 package dev.cheercode.connectfour;
 
-import dev.cheercode.connectfour.dialogs.Dialog;
-import dev.cheercode.connectfour.dialogs.impl.IntegerMinMaxDialog;
-
 import java.util.Queue;
 
 public class Game {
@@ -15,14 +12,12 @@ public class Game {
     private final Queue<Player> players;
     private final Render render;
     private final ResultAnalyzer resultAnalyzer;
-    private final Dialog<Integer> dialog;
 
     public Game(Queue<Player> players, Render render, ResultAnalyzer resultAnalyzer) {
         this.board = StandardBoardFactory.create();
         this.players = players;
         this.render = render;
         this.resultAnalyzer = resultAnalyzer;
-        this.dialog = new IntegerMinMaxDialog(", введите номер колонки:", "Неправильный ввод.", 1, board.getWidth());
     }
 
     public void start() {
@@ -42,12 +37,10 @@ public class Game {
     }
 
     private void nextTurn(Player player) {
-        System.out.print(player.getName());
-        int columnNumber = dialog.input();
+        int columnNumber = player.select(board);
         while (isFilled(columnNumber)) {
             System.out.println("Эта колонка заполнена.");
-            System.out.print(player.getName());
-            columnNumber = dialog.input();
+            columnNumber = player.select(board);
         }
         int columnIndex = columnNumber - 1;
 
