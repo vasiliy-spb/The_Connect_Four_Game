@@ -3,7 +3,7 @@ package dev.cheercode.connectfour.game;
 import dev.cheercode.connectfour.models.Disk;
 
 public class ResultAnalyzer {
-    private static final int[][] DIRECTIONS = {{0, 1}, {1, 0}, {1, 1}};
+    private static final int[][] DIRECTIONS = {{0, 1}, {1, 0}, {1, 1}, {1, -1}};
 
     public boolean hasWinner(Disk[][] grid, int countToVictory) {
         for (int row = 0; row < grid.length; row++) {
@@ -31,9 +31,7 @@ public class ResultAnalyzer {
         int height = grid.length;
         int width = grid[0].length;
 
-        while (countToVictory-- > 0) {
-            row += rowOffset;
-            column += columnOffset;
+        while (countToVictory > 0) {
             if (!isValid(row, column, height, width)) {
                 break;
             }
@@ -42,6 +40,10 @@ public class ResultAnalyzer {
             if (currentDisk != diskSample) {
                 return false;
             }
+
+            row += rowOffset;
+            column += columnOffset;
+            countToVictory--;
         }
         return countToVictory == 0;
     }
