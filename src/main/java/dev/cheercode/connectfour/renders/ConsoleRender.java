@@ -15,7 +15,7 @@ public class ConsoleRender implements Render {
         printGrid(grid);
     }
 
-    private static void printColumnNumbers(int width) {
+    private void printColumnNumbers(int width) {
         for (int i = 1; i <= width; i++) {
             System.out.print(SPACE + i + SPACE);
         }
