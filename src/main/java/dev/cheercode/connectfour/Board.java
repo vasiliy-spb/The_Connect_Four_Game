@@ -52,7 +52,7 @@ public class Board {
             throw new IllegalArgumentException("Column number out of bounds.");
         }
         int position = positions[column];
-        return grid[position][column] == null;
+        return grid[position][column] == Disk.EMPTY;
     }
 
     public boolean isFilled(int column) {
