@@ -1,13 +1,16 @@
 package dev.cheercode.connectfour.dialogs.impl;
 
-import java.util.List;
+import dev.cheercode.connectfour.user_input_readers.UserInputReader;
+
+import java.util.Set;
 
 public class StringDialog extends AbstractDialog<String> {
-    public StringDialog(String title, String error, List<String> keys) {
+    public StringDialog(String title, String error, Set<String> keys, UserInputReader reader) {
         super(title,
                 error,
-                s -> s.trim().toLowerCase(),
-                keys::contains
+                s -> s.trim().toUpperCase(),
+                keys::contains,
+                reader
         );
     }
 }

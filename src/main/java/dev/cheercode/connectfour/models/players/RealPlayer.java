@@ -1,5 +1,6 @@
 package dev.cheercode.connectfour.models.players;
 
+import dev.cheercode.connectfour.user_input_readers.ConsoleUserInputReader;
 import dev.cheercode.connectfour.dialogs.Dialog;
 import dev.cheercode.connectfour.dialogs.impl.IntegerMinMaxDialog;
 import dev.cheercode.connectfour.models.Board;
@@ -16,7 +17,7 @@ public class RealPlayer extends AbstractPlayer {
         int lastColumn = board.getWidth();
         String title = name + ", введите номер колонки:";
         String error = "Неправильный ввод.";
-        Dialog<Integer> dialog = new IntegerMinMaxDialog(title, error, firstColumn, lastColumn);
+        Dialog<Integer> dialog = new IntegerMinMaxDialog(title, error, firstColumn, lastColumn, ConsoleUserInputReader.getInstance());
         return dialog.input();
     }
 }
