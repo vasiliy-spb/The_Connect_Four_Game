@@ -3,7 +3,6 @@ package dev.cheercode.connectfour.user_input_readers;
 import java.util.Scanner;
 
 public final class ConsoleUserInputReader implements UserInputReader {
-    private static ConsoleUserInputReader instance;
     private final Scanner scanner;
 
     private ConsoleUserInputReader() {
@@ -11,10 +10,7 @@ public final class ConsoleUserInputReader implements UserInputReader {
     }
 
     public static ConsoleUserInputReader getInstance() {
-        if (instance == null) {
-            instance = new ConsoleUserInputReader();
-        }
-        return instance;
+        return Holder.INSTANCE;
     }
 
     @Override
@@ -30,5 +26,9 @@ public final class ConsoleUserInputReader implements UserInputReader {
     @Override
     public void close() {
         scanner.close();
+    }
+
+    private static class Holder {
+        private static final ConsoleUserInputReader INSTANCE = new ConsoleUserInputReader();
     }
 }
