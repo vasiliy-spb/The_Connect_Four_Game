@@ -1,6 +1,6 @@
 package dev.cheercode.connectfour;
 
-import dev.cheercode.connectfour.models.Disk;
+import dev.cheercode.connectfour.models.Color;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -9,14 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class GridFactory {
-    private static final String BLUE_DISK = "\uD83D\uDD35";
-    private static final String RED_DISK = "\uD83D\uDD34";
-    private static final String EMPTY_DISK = "⚪";
+    private static final String BLUE = "\uD83D\uDD35";
+    private static final String RED = "\uD83D\uDD34";
+    private static final String WHITE = "⚪";
 
     private GridFactory() {
     }
 
-    public static Disk[][] create(String templateFilePath) {
+    public static Color[][] create(String templateFilePath) {
         try (BufferedReader reader = new BufferedReader(new FileReader(templateFilePath))) {
             List<String[]> lines = new ArrayList<>();
             while (reader.ready()) {
@@ -25,24 +25,24 @@ public final class GridFactory {
             }
             int height = lines.size();
             int width = lines.get(0).length;
-            Disk[][] grid = new Disk[height][width];
+            Color[][] grid = new Color[height][width];
             for (int i = 0; i < height; i++) {
                 for (int j = 0; j < width; j++) {
-                    grid[i][j] = getDisk(lines.get(i)[j]);
+                    grid[i][j] = getColor(lines.get(i)[j]);
                 }
             }
             return grid;
         } catch (IOException ignored) {
         }
-        return new Disk[][]{};
+        return new Color[][]{};
     }
 
-    private static Disk getDisk(String representation) {
+    private static Color getColor(String representation) {
         return switch (representation) {
-            case RED_DISK -> Disk.RED;
-            case BLUE_DISK -> Disk.BLUE;
-            case EMPTY_DISK -> Disk.EMPTY;
-            default -> throw new IllegalArgumentException("Unknown disk for representation: " + representation);
+            case RED -> Color.RED;
+            case BLUE -> Color.BLUE;
+            case WHITE -> Color.WHITE;
+            default -> throw new IllegalArgumentException("Unknown color for representation: " + representation);
         };
     }
 }

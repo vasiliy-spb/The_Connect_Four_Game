@@ -1,7 +1,7 @@
 package dev.cheercode.connectfour.renders;
 
-import dev.cheercode.connectfour.models.Disk;
+import dev.cheercode.connectfour.models.Color;
 
 public interface Render {
-    void display(Disk[][] grid);
+    void display(Color[][] grid);
 }

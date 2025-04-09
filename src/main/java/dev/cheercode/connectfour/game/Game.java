@@ -2,7 +2,7 @@ package dev.cheercode.connectfour.game;
 
 import dev.cheercode.connectfour.factories.StandardBoardFactory;
 import dev.cheercode.connectfour.models.Board;
-import dev.cheercode.connectfour.models.Disk;
+import dev.cheercode.connectfour.models.Color;
 import dev.cheercode.connectfour.models.players.Player;
 import dev.cheercode.connectfour.renders.Render;
 
@@ -60,8 +60,8 @@ public class Game {
         }
         int columnIndex = columnNumber - 1;
 
-        Disk playersDisk = player.getDisk();
-        board.put(playersDisk, columnIndex);
+        Color playersColor = player.getColor();
+        board.put(playersColor, columnIndex);
     }
 
     private boolean isFilled(int columnNumber) {

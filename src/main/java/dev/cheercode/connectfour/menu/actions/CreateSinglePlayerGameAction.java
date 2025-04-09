@@ -19,7 +19,7 @@ public class CreateSinglePlayerGameAction implements Action {
         PlayerFactory playerFactory = new RealPlayerFactory(ConsoleUserInputReader.getInstance());
         Player player = playerFactory.create();
         PlayerFactory botFactory = new BotFactory();
-        if (player.getDisk().ordinal() == 0) {
+        if (player.getColor().ordinal() == 0) {
             botFactory.create();
         }
         Player bot = botFactory.create();

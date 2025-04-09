@@ -1,7 +1,7 @@
 package dev.cheercode.connectfour;
 
 import dev.cheercode.connectfour.factories.players.BotFactory;
-import dev.cheercode.connectfour.models.Disk;
+import dev.cheercode.connectfour.models.Color;
 import dev.cheercode.connectfour.models.players.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,13 +23,13 @@ public class BotFactoryTests {
     public void checkTestcase01() {
         Player bot1 = botFactory.create();
         Player bot2 = botFactory.create();
-        assertTrue(bot1.getDisk() != bot2.getDisk() && bot1.getDisk() != Disk.EMPTY);
+        assertTrue(bot1.getColor() != bot2.getColor() && bot1.getColor() != Color.WHITE);
     }
 
     @Test
     public void checkTestcase02() {
         try {
-            int count = Disk.values().length - 1;
+            int count = Color.values().length - 1;
             while (count-- > 0) {
                 botFactory.create();
             }
@@ -42,7 +42,7 @@ public class BotFactoryTests {
     @Test
     public void checkTestcase03() {
         try {
-            int count = Disk.values().length;
+            int count = Color.values().length;
             while (count-- > 0) {
                 botFactory.create();
             }
@@ -57,14 +57,14 @@ public class BotFactoryTests {
     public void checkTestcase04() {
         try {
             Set<Player> players = new HashSet<>();
-            Set<Disk> disks = new HashSet<>();
-            int count = Disk.values().length - 1;
+            Set<Color> colors = new HashSet<>();
+            int count = Color.values().length - 1;
             while (count-- > 0) {
                 Player bot = botFactory.create();
                 players.add(bot);
-                disks.add(bot.getDisk());
+                colors.add(bot.getColor());
             }
-            assertTrue(players.size() == disks.size());
+            assertTrue(players.size() == colors.size());
         } catch (RuntimeException e) {
             assertTrue(false);
         }

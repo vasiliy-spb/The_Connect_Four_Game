@@ -2,7 +2,7 @@ package dev.cheercode.connectfour;
 
 import dev.cheercode.connectfour.factories.StandardBoardFactory;
 import dev.cheercode.connectfour.models.Board;
-import dev.cheercode.connectfour.models.Disk;
+import dev.cheercode.connectfour.models.Color;
 import dev.cheercode.connectfour.renders.ConsoleRender;
 import dev.cheercode.connectfour.renders.Render;
 import org.junit.jupiter.api.BeforeAll;
@@ -96,9 +96,9 @@ public class BoardTests {
     public void checkTestcase06() {
         Random random = new Random();
         int columnIndex = random.nextInt(board.getWidth());
-        Disk tempDisk = Disk.RED;
+        Color tempColor = Color.RED;
         for (int i = 0; i < board.getGrid().length; i++) {
-            board.put(tempDisk, columnIndex);
+            board.put(tempColor, columnIndex);
         }
         render.display(board.getGrid());
         try {
@@ -113,9 +113,9 @@ public class BoardTests {
     public void checkTestcase07() {
         Random random = new Random();
         int columnIndex = random.nextInt(board.getWidth());
-        Disk tempDisk = Disk.RED;
+        Color tempColor = Color.RED;
         for (int i = 1; i < board.getGrid().length; i++) {
-            board.put(tempDisk, columnIndex);
+            board.put(tempColor, columnIndex);
         }
         render.display(board.getGrid());
         try {
@@ -130,8 +130,8 @@ public class BoardTests {
     public void checkTestcase08() {
         Random random = new Random();
         int columnIndex = random.nextInt(board.getWidth());
-        Disk tempDisk = Disk.RED;
-        board.put(tempDisk, columnIndex);
+        Color tempColor = Color.RED;
+        board.put(tempColor, columnIndex);
         render.display(board.getGrid());
         try {
             assertFalse(board.isFilled(columnIndex));
@@ -145,13 +145,13 @@ public class BoardTests {
     public void checkTestcase09() {
         Random random = new Random();
         int emptyIndex = random.nextInt(board.getWidth());
-        Disk tempDisk = Disk.RED;
+        Color tempColor = Color.RED;
         for (int row = 0; row < board.getGrid().length; row++) {
             for (int column = 0; column < board.getWidth(); column++) {
                 if (row == 0 && column == emptyIndex) {
                     continue;
                 }
-                board.put(tempDisk, column);
+                board.put(tempColor, column);
             }
         }
         render.display(board.getGrid());
@@ -161,10 +161,10 @@ public class BoardTests {
     @Test
     @DisplayName("isFull() return correct answer for full grid")
     public void checkTestcase10() {
-        Disk tempDisk = Disk.RED;
+        Color tempColor = Color.RED;
         for (int row = 0; row < board.getGrid().length; row++) {
             for (int column = 0; column < board.getWidth(); column++) {
-                board.put(tempDisk, column);
+                board.put(tempColor, column);
             }
         }
         render.display(board.getGrid());
@@ -172,19 +172,19 @@ public class BoardTests {
     }
 
     @Test
-    @DisplayName("isFull() throws exception when trying to put disk into full grid")
+    @DisplayName("isFull() throws exception when trying to put color into full grid")
     public void checkTestcase11() {
-        Disk tempDisk = Disk.RED;
+        Color tempColor = Color.RED;
         for (int row = 0; row < board.getGrid().length; row++) {
             for (int column = 0; column < board.getWidth(); column++) {
-                board.put(tempDisk, column);
+                board.put(tempColor, column);
             }
         }
         render.display(board.getGrid());
         Random random = new Random();
         int additionalIndex = random.nextInt(board.getWidth());
         try {
-            board.put(tempDisk, additionalIndex);
+            board.put(tempColor, additionalIndex);
             assertTrue(false);
         } catch (IllegalArgumentException e) {
             assertTrue(true);

@@ -1,14 +1,14 @@
 package dev.cheercode.connectfour.models.players;
 
-import dev.cheercode.connectfour.models.Disk;
+import dev.cheercode.connectfour.models.Color;
 
 public abstract class AbstractPlayer implements Player {
     protected final String name;
-    private final Disk disk;
+    private final Color color;
 
-    public AbstractPlayer(String name, Disk disk) {
+    public AbstractPlayer(String name, Color color) {
         this.name = name;
-        this.disk = disk;
+        this.color = color;
     }
 
     @Override
@@ -17,7 +17,7 @@ public abstract class AbstractPlayer implements Player {
     }
 
     @Override
-    public Disk getDisk() {
-        return disk;
+    public Color getColor() {
+        return color;
     }
 }

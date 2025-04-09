@@ -1,7 +1,7 @@
 package dev.cheercode.connectfour.models;
 
-public enum Disk {
+public enum Color {
     BLUE,
     RED,
-    EMPTY;
+    WHITE;
 }

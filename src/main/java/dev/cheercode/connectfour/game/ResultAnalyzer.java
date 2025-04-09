@@ -1,15 +1,15 @@
 package dev.cheercode.connectfour.game;
 
-import dev.cheercode.connectfour.models.Disk;
+import dev.cheercode.connectfour.models.Color;
 
 public class ResultAnalyzer {
     private static final int[][] DIRECTIONS = {{0, 1}, {1, 0}, {1, 1}, {1, -1}};
 
-    public boolean hasWinner(Disk[][] grid, int countToVictory) {
+    public boolean hasWinner(Color[][] grid, int countToVictory) {
         for (int row = 0; row < grid.length; row++) {
             for (int column = 0; column < grid[row].length; column++) {
-                Disk disk = grid[row][column];
-                if (disk == Disk.EMPTY) {
+                Color color = grid[row][column];
+                if (color == Color.WHITE) {
                     continue;
                 }
 
@@ -24,8 +24,8 @@ public class ResultAnalyzer {
         return false;
     }
 
-    private boolean checkDirection(Disk[][] grid, int row, int column, int[] direction, int countToVictory) {
-        final Disk diskSample = grid[row][column];
+    private boolean checkDirection(Color[][] grid, int row, int column, int[] direction, int countToVictory) {
+        final Color colorSample = grid[row][column];
         int rowOffset = direction[0];
         int columnOffset = direction[1];
         int height = grid.length;
@@ -36,8 +36,8 @@ public class ResultAnalyzer {
                 break;
             }
 
-            Disk currentDisk = grid[row][column];
-            if (currentDisk != diskSample) {
+            Color currentColor = grid[row][column];
+            if (currentColor != colorSample) {
                 return false;
             }
 

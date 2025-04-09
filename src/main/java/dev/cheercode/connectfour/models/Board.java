@@ -5,13 +5,13 @@ import java.util.Arrays;
 public class Board {
     private final int height;
     private final int width;
-    private final Disk[][] grid;
+    private final Color[][] grid;
     private final int[] positions;
 
     public Board(int height, int width) {
         this.height = height;
         this.width = width;
-        this.grid = new Disk[height][width];
+        this.grid = new Color[height][width];
         this.positions = new int[width];
         init();
     }
@@ -24,7 +24,7 @@ public class Board {
     private void initGrid() {
         for (int row = 0; row < height; row++) {
             for (int column = 0; column < width; column++) {
-                grid[row][column] = Disk.EMPTY;
+                grid[row][column] = Color.WHITE;
             }
         }
     }
@@ -33,7 +33,7 @@ public class Board {
         Arrays.fill(positions, height - 1);
     }
 
-    public void put(Disk disk, int column) {
+    public void put(Color color, int column) {
         if (isOutOfBounds(column)) {
             throw new IndexOutOfBoundsException("Column number out of bounds.");
         }
@@ -42,7 +42,7 @@ public class Board {
         }
         int row = positions[column];
         if (isSlotEmpty(column)) {
-            grid[row][column] = disk;
+            grid[row][column] = color;
             positions[column]--;
         }
     }
@@ -52,7 +52,7 @@ public class Board {
             throw new IndexOutOfBoundsException("Column number out of bounds.");
         }
         int row = positions[column];
-        return grid[row][column] == Disk.EMPTY;
+        return grid[row][column] == Color.WHITE;
     }
 
     public boolean isFilled(int column) {
@@ -75,8 +75,8 @@ public class Board {
         return true;
     }
 
-    public Disk[][] getGrid() {
-        Disk[][] gridCopy = new Disk[height][width];
+    public Color[][] getGrid() {
+        Color[][] gridCopy = new Color[height][width];
         for (int row = 0; row < height; row++) {
             for (int column = 0; column < width; column++) {
                 gridCopy[row][column] = grid[row][column];

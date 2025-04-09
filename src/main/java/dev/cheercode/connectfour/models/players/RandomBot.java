@@ -1,15 +1,15 @@
 package dev.cheercode.connectfour.models.players;
 
 import dev.cheercode.connectfour.models.Board;
-import dev.cheercode.connectfour.models.Disk;
+import dev.cheercode.connectfour.models.Color;
 
 import java.util.Random;
 
 public class RandomBot extends AbstractPlayer {
     private static final Random RANDOM = new Random();
 
-    public RandomBot(String name, Disk disk) {
-        super(name, disk);
+    public RandomBot(String name, Color color) {
+        super(name, color);
     }
 
     @Override

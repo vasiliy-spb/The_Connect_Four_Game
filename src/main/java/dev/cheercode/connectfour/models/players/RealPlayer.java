@@ -4,11 +4,11 @@ import dev.cheercode.connectfour.user_input_readers.ConsoleUserInputReader;
 import dev.cheercode.connectfour.dialogs.Dialog;
 import dev.cheercode.connectfour.dialogs.impl.IntegerMinMaxDialog;
 import dev.cheercode.connectfour.models.Board;
-import dev.cheercode.connectfour.models.Disk;
+import dev.cheercode.connectfour.models.Color;
 
 public class RealPlayer extends AbstractPlayer {
-    public RealPlayer(String name, Disk disk) {
-        super(name, disk);
+    public RealPlayer(String name, Color color) {
+        super(name, color);
     }
 
     @Override

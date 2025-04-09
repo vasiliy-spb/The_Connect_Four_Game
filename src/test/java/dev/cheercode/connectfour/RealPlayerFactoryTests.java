@@ -3,7 +3,7 @@ package dev.cheercode.connectfour;
 import dev.cheercode.connectfour.user_input_readers.UserInputReader;
 import dev.cheercode.connectfour.factories.players.PlayerFactory;
 import dev.cheercode.connectfour.factories.players.RealPlayerFactory;
-import dev.cheercode.connectfour.models.Disk;
+import dev.cheercode.connectfour.models.Color;
 import dev.cheercode.connectfour.models.players.Player;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -80,7 +80,7 @@ public class RealPlayerFactoryTests {
         PlayerFactory factory = new RealPlayerFactory(reader);
         Player player = factory.create();
 
-        assertEquals(Disk.RED, player.getDisk());
+        assertEquals(Color.RED, player.getColor());
     }
 
     @Test
@@ -93,7 +93,7 @@ public class RealPlayerFactoryTests {
         PlayerFactory factory = new RealPlayerFactory(reader);
         Player player = factory.create();
 
-        assertEquals(Disk.BLUE, player.getDisk());
+        assertEquals(Color.BLUE, player.getColor());
     }
 
     @Test
@@ -106,7 +106,7 @@ public class RealPlayerFactoryTests {
         PlayerFactory factory = new RealPlayerFactory(reader);
         Player player = factory.create();
 
-        assertEquals(Disk.RED, player.getDisk());
+        assertEquals(Color.RED, player.getColor());
     }
 
     @Test
@@ -119,7 +119,7 @@ public class RealPlayerFactoryTests {
         PlayerFactory factory = new RealPlayerFactory(reader);
         Player player = factory.create();
 
-        assertEquals(Disk.BLUE, player.getDisk());
+        assertEquals(Color.BLUE, player.getColor());
     }
 
     @Test
@@ -225,7 +225,7 @@ public class RealPlayerFactoryTests {
     @Test
     @DisplayName("Number of created players equals number of available colors")
     public void checkTestcase13() {
-        final int count = Disk.values().length - 1;
+        final int count = Color.values().length - 1;
         String name = "Igrok Moshchny ";
         String[] colorKeys = {"r", "B"};
 
@@ -245,15 +245,15 @@ public class RealPlayerFactoryTests {
         PlayerFactory factory = new RealPlayerFactory(reader);
 
         Set<Player> players = new HashSet<>();
-        Set<Disk> disks = new HashSet<>();
+        Set<Color> colors = new HashSet<>();
 
         try {
             for (int i = 0; i < count; i++) {
                 Player player = factory.create();
                 players.add(player);
-                disks.add(player.getDisk());
+                colors.add(player.getColor());
             }
-            assertEquals(players.size(), disks.size());
+            assertEquals(players.size(), colors.size());
             assertEquals(players.size(), count);
         } catch (RuntimeException e) {
             fail();
@@ -263,7 +263,7 @@ public class RealPlayerFactoryTests {
     @Test
     @DisplayName("Don't create more players then has available colors")
     public void checkTestcase14() {
-        int count = Disk.values().length - 1;
+        int count = Color.values().length - 1;
         String name = "Igrok Moshchny ";
         String[] colorKeys = {"r", "B"};
 
@@ -281,15 +281,15 @@ public class RealPlayerFactoryTests {
         PlayerFactory factory = new RealPlayerFactory(reader);
 
         Set<Player> players = new HashSet<>();
-        Set<Disk> disks = new HashSet<>();
+        Set<Color> colors = new HashSet<>();
 
         try {
             while (count-- > 0) {
                 Player player = factory.create();
                 players.add(player);
-                disks.add(player.getDisk());
+                colors.add(player.getColor());
             }
-            assertEquals(players.size(), disks.size());
+            assertEquals(players.size(), colors.size());
         } catch (RuntimeException e) {
             fail();
         }
