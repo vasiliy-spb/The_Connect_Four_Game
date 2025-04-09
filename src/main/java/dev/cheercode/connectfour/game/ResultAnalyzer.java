@@ -38,8 +38,7 @@ public class ResultAnalyzer {
                 break;
             }
 
-            Color currentColor = grid[row][column];
-            if (currentColor != colorSample) {
+            if (!areSameColors(row, column, grid, colorSample)) {
                 return false;
             }
 
@@ -48,6 +47,10 @@ public class ResultAnalyzer {
             countToVictory--;
         }
         return countToVictory == 0;
+    }
+
+    private boolean areSameColors(int row, int column, Color[][] grid, Color colorSample) {
+        return grid[row][column] == colorSample;
     }
 
     private boolean isValid(int row, int column, int height, int width) {
