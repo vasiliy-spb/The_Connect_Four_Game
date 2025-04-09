@@ -8,14 +8,12 @@ public class ResultAnalyzer {
     public boolean hasWinner(Color[][] grid, int countToVictory) {
         for (int row = 0; row < grid.length; row++) {
             for (int column = 0; column < grid[row].length; column++) {
-                Color color = grid[row][column];
-                if (color == Color.WHITE) {
+                if (isEmptyCell(row, column, grid)) {
                     continue;
                 }
 
                 for (int[] direction : DIRECTIONS) {
-                    boolean winDirection = checkDirection(grid, row, column, direction, countToVictory);
-                    if (winDirection) {
+                    if (isWinDirection(grid, row, column, direction, countToVictory)) {
                         return true;
                     }
                 }
@@ -24,7 +22,11 @@ public class ResultAnalyzer {
         return false;
     }
 
-    private boolean checkDirection(Color[][] grid, int row, int column, int[] direction, int countToVictory) {
+    private boolean isEmptyCell(int row, int column, Color[][] grid) {
+        return grid[row][column] == Color.WHITE;
+    }
+
+    private boolean isWinDirection(Color[][] grid, int row, int column, int[] direction, int countToVictory) {
         final Color colorSample = grid[row][column];
         int rowOffset = direction[0];
         int columnOffset = direction[1];
