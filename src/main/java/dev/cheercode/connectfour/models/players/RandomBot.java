@@ -14,6 +14,7 @@ public class RandomBot extends AbstractPlayer {
 
     @Override
     public int select(Board board) {
+        System.out.println("Ходит " + name);
         int firstColumn = 1;
         int lastColumn = board.getWidth();
         return RANDOM.nextInt(firstColumn, lastColumn + 1);

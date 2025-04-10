@@ -50,8 +50,7 @@ public class RealPlayerFactory implements PlayerFactory {
         String title = """
                 %s, выберите цвет:
                 %s — красный
-                %s — синий
-                """.formatted(name, RED_KEY, BLUE_KEY);
+                %s — синий""".formatted(name, RED_KEY, BLUE_KEY);
         Dialog<String> dialog = new StringDialog(title, "Неправильный ввод.", Set.of(RED_KEY, BLUE_KEY), reader);
         String key = dialog.input();
         Color color = getColor(key);

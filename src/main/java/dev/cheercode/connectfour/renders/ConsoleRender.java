@@ -7,7 +7,7 @@ public class ConsoleRender implements Render {
     private static final String RED_CELL = "\uD83D\uDD34";
     private static final String NONE_CELL = "⚪";
     private static final String SPACE = " ";
-    private static final String YELLOW_BACKGROUND = "\033[43m";
+    private static final String BACKGROUND_COLOR = "\033[45m";
     private static final String RESET_BACKGROUND = "\033[0m";
 
     @Override
@@ -18,6 +18,7 @@ public class ConsoleRender implements Render {
     }
 
     private void printColumnNumbers(int width) {
+        System.out.print(SPACE);
         for (int i = 1; i <= width; i++) {
             System.out.print(SPACE + i + SPACE);
         }
@@ -26,13 +27,14 @@ public class ConsoleRender implements Render {
 
     private void printGrid(Color[][] grid) {
         for (int i = 0; i < grid.length; i++) {
-            System.out.print(YELLOW_BACKGROUND);
+            System.out.print(BACKGROUND_COLOR + SPACE);
             for (int j = 0; j < grid[i].length; j++) {
                 String representation = getRepresentation(grid[i][j]);
                 System.out.print(representation + SPACE);
             }
             System.out.println(RESET_BACKGROUND);
         }
+        System.out.println();
     }
 
     private String getRepresentation(Color color) {
