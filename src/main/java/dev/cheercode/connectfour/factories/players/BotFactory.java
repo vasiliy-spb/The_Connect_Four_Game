@@ -11,7 +11,7 @@ public class BotFactory implements PlayerFactory {
     private final Set<Color> usedColors = new HashSet<>();
 
     public BotFactory() {
-        usedColors.add(Color.NONE);
+        usedColors.add(Color.NEUTRAL);
     }
 
     @Override

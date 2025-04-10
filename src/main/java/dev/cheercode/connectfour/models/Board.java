@@ -24,7 +24,7 @@ public class Board {
     private void initGrid() {
         for (int row = 0; row < height; row++) {
             for (int column = 0; column < width; column++) {
-                grid[row][column] = Color.NONE;
+                grid[row][column] = Color.NEUTRAL;
             }
         }
     }
@@ -52,7 +52,7 @@ public class Board {
             throw new IndexOutOfBoundsException("Column number out of bounds.");
         }
         int row = rowPositions[column];
-        return grid[row][column] == Color.NONE;
+        return grid[row][column] == Color.NEUTRAL;
     }
 
     public boolean isFilled(int column) {

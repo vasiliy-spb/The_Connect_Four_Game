@@ -19,7 +19,7 @@ public class RealPlayerFactory implements PlayerFactory {
 
     public RealPlayerFactory(UserInputReader reader) {
         this.reader = reader;
-        usedColors.add(Color.NONE);
+        usedColors.add(Color.NEUTRAL);
     }
 
     @Override

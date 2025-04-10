@@ -23,7 +23,7 @@ public class BotFactoryTests {
     public void checkTestcase01() {
         Player bot1 = botFactory.create();
         Player bot2 = botFactory.create();
-        assertTrue(bot1.getColor() != bot2.getColor() && bot1.getColor() != Color.NONE);
+        assertTrue(bot1.getColor() != bot2.getColor() && bot1.getColor() != Color.NEUTRAL);
     }
 
     @Test

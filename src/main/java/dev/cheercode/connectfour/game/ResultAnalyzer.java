@@ -23,7 +23,7 @@ public class ResultAnalyzer {
     }
 
     private boolean isEmptyCell(int row, int column, Color[][] grid) {
-        return grid[row][column] == Color.NONE;
+        return grid[row][column] == Color.NEUTRAL;
     }
 
     private boolean isWinDirection(Color[][] grid, int row, int column, int[] direction, int countToVictory) {

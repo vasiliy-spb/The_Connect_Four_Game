@@ -5,7 +5,7 @@ import dev.cheercode.connectfour.models.Color;
 public class ConsoleRender implements Render {
     private static final String BLUE_CELL = "\uD83D\uDD35";
     private static final String RED_CELL = "\uD83D\uDD34";
-    private static final String NONE_CELL = "⚪";
+    private static final String NEUTRAL_CELL = "⚪";
     private static final String SPACE = " ";
     private static final String BACKGROUND_COLOR = "\033[45m";
     private static final String RESET_BACKGROUND = "\033[0m";
@@ -41,7 +41,7 @@ public class ConsoleRender implements Render {
         return switch (color) {
             case BLUE -> BLUE_CELL;
             case RED -> RED_CELL;
-            case NONE -> NONE_CELL;
+            case NEUTRAL -> NEUTRAL_CELL;
             default -> throw new IllegalArgumentException("Unknown representation for color: " + color.name());
         };
     }
