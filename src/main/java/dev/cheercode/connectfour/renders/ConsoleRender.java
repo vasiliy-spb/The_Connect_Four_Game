@@ -5,7 +5,7 @@ import dev.cheercode.connectfour.models.Color;
 public class ConsoleRender implements Render {
     private static final String BLUE = "\uD83D\uDD35";
     private static final String RED = "\uD83D\uDD34";
-    private static final String WHITE = "⚪";
+    private static final String NONE = "⚪";
     private static final String SPACE = " ";
 
     @Override
@@ -36,7 +36,7 @@ public class ConsoleRender implements Render {
         return switch (color) {
             case BLUE -> BLUE;
             case RED -> RED;
-            case WHITE -> WHITE;
+            case NONE -> NONE;
             default -> throw new IllegalArgumentException("Unknown representation for color: " + color.name());
         };
     }

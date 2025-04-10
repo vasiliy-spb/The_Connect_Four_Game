@@ -11,7 +11,7 @@ import java.util.List;
 public final class GridFactory {
     private static final String BLUE = "\uD83D\uDD35";
     private static final String RED = "\uD83D\uDD34";
-    private static final String WHITE = "⚪";
+    private static final String NONE = "⚪";
 
     private GridFactory() {
     }
@@ -41,7 +41,7 @@ public final class GridFactory {
         return switch (representation) {
             case RED -> Color.RED;
             case BLUE -> Color.BLUE;
-            case WHITE -> Color.WHITE;
+            case NONE -> Color.NONE;
             default -> throw new IllegalArgumentException("Unknown color for representation: " + representation);
         };
     }

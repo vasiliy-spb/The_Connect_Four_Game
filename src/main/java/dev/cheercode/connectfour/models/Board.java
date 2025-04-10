@@ -6,13 +6,13 @@ public class Board {
     private final int height;
     private final int width;
     private final Color[][] grid;
-    private final int[] positions;
+    private final int[] rowPositions;
 
     public Board(int height, int width) {
         this.height = height;
         this.width = width;
         this.grid = new Color[height][width];
-        this.positions = new int[width];
+        this.rowPositions = new int[width];
         init();
     }
 
@@ -24,13 +24,13 @@ public class Board {
     private void initGrid() {
         for (int row = 0; row < height; row++) {
             for (int column = 0; column < width; column++) {
-                grid[row][column] = Color.WHITE;
+                grid[row][column] = Color.NONE;
             }
         }
     }
 
     private void initPositions() {
-        Arrays.fill(positions, height - 1);
+        Arrays.fill(rowPositions, height - 1);
     }
 
     public void put(Color color, int column) {
@@ -40,10 +40,10 @@ public class Board {
         if (isFilled(column)) {
             throw new IllegalArgumentException("Column %d is filled.".formatted(column + 1));
         }
-        int row = positions[column];
         if (isSlotEmpty(column)) {
+            int row = rowPositions[column];
             grid[row][column] = color;
-            positions[column]--;
+            rowPositions[column]--;
         }
     }
 
@@ -51,15 +51,15 @@ public class Board {
         if (isOutOfBounds(column)) {
             throw new IndexOutOfBoundsException("Column number out of bounds.");
         }
-        int row = positions[column];
-        return grid[row][column] == Color.WHITE;
+        int row = rowPositions[column];
+        return grid[row][column] == Color.NONE;
     }
 
     public boolean isFilled(int column) {
         if (isOutOfBounds(column)) {
             throw new IndexOutOfBoundsException("Column number out of bounds.");
         }
-        return positions[column] < 0;
+        return rowPositions[column] < 0;
     }
 
     private boolean isOutOfBounds(int column) {
